@@ -28,6 +28,13 @@ class Panel():
         self.width = pv_width
         self.power = pv_power
 
+def panel_calculate(roof_length, panel_length, roof_width, panel_width, power):
+    length_ratio = int(roof_length/panel_length)
+    width_ratio = int (roof_width/panel_width)
+    panel_number = length_ratio*width_ratio*2
+    total_capacity = panel_number * power
+    return(panel_number, total_capacity)
+
       
 building_name = input("Please provide the name of the building. ")
 building_length = int(input("Please provide a value for the length of the building in metres."))               
@@ -41,9 +48,6 @@ panel_width = int(input("Please provide the width of the panel in mm."))/1000
 panel_power = int(input("Please provide the peak power rating of the panel in W."))/1000
 Panel1 = Panel(pv_name, panel_length, panel_width, panel_power)
 
-length_ratio = int(Building1.length/Panel1.length)
-width_ratio = int (Building1.roof_width/Panel1.width)
-panel_number = length_ratio*width_ratio*2
-total_capacity = panel_number * Panel1.power
+panel_calculate(Building1.length, Panel1.length, Building1.roof_width, Panel1.width, Panel1.power)
 
 print("The maximum number of panels is {} and the peak power capacity is {} kWp".format(panel_number,total_capacity))
