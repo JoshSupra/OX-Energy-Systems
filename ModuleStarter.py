@@ -81,11 +81,9 @@ def battery_charge_action(soc, power, E_tot, P_max, T):
         deltaE = min(P_max * T, (E_tot - soc), -1 * power * T)
         
     else:
-        deltaE = 0
-        
+        deltaE = 0  
     soc += deltaE
     net_power = power + (deltaE/T)   
-    # update soc and calculate net_power
     return soc, net_power
 
 
